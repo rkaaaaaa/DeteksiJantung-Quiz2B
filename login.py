@@ -37,6 +37,6 @@ def login_page():
         if nama and umur and asal:
             st.session_state["user"] = {"nama": nama, "umur": umur, "asal": asal}
             st.session_state["page"] = "deteksi"  # Set flag for redirection
-            st.success(f"Selamat datang, {nama}! Anda berhasil login.")
+            st.success(f"Selamat datang, {nama}! Anda berhasil login, klik login lagi yaa untuk lanjut di halaman deteksi ")
         else:
             st.error("Harap isi semua kolom untuk melanjutkan.")
