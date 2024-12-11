@@ -2,7 +2,6 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
-import requests
 
 # Gejala-Gejala dan penyakit berdasarkan Data dari QUIZ 2B
 gejala = [
@@ -89,24 +88,9 @@ def deteksi_page(user):
             if penyakit_tertinggi:
                 gejala_input = ", ".join(gejala_terpilih)
                 st.write(f"Dari data yang Anda inputkan ({gejala_input}), Anda mungkin mengalami: {penyakit_tertinggi}")
-
-                # Panggil API untuk mendapatkan saran kesehatan
-                response = requests.post("http://127.0.0.1:5000/saran", json={"gejala": gejala_terpilih})
-                if response.status_code == 200:
-                    saran = response.json().get("saran", [])
-                    st.write("Saran Kesehatan:")
-                    for item in saran:
-                        if isinstance(item, list):
-                            for s in item:
-                                st.write(f"- {s}")
-                        else:
-                            st.write(f"- {item}")
             else:
                 st.write("Gejala yang Anda alami tidak sesuai dengan penyakit jantung yang terdaftar.")
     else:
-        st.write("Silakan pilih gejala yang Anda rasakan dengan jujur untuk melanjutkan deteksi awal penyakit jantung.")
+        st.write("Silakan pilih gejala yang anda rasakan dengan jujur untuk melanjutkan deteksi awal penyakit jantung.")
 
     st.write("---")
-
-if __name__ == "__main__":
-    deteksi_page()
