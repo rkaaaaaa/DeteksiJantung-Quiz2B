@@ -15,7 +15,7 @@ gejala = [
 
 penyakit = {
     "Penyakit Jantung Koroner": ["Nyeri dada", "Bahu kiri terasa tidak enak", "Keringat dingin", "Sesak nafas", 
-    "Gangguan pencernaan", "Mual", "Detak jantung tidak teratur", "Nyeri di daerah lengan kiri", "Punggung terasa tidak enak"],
+                                 "Gangguan pencernaan", "Mual", "Detak jantung tidak teratur", "Nyeri di daerah lengan kiri", "Punggung terasa tidak enak"],
     "Penyakit Otot Jantung (Kardiomiopati)": ["Sesak nafas", "Pusing", "Kaki bengkak", "Jantung berdebar-debar", "Mudah lelah", "Detak jantung tidak teratur"],
     "Penyakit Jantung Iskemik": ["Nyeri di daerah dada tengah", "Mudah berkeringat", "Dada mengencang", "Nyeri di daerah lengan kiri", "Penebalan tendon achiles"],
     "Gagal Jantung": ["Sesak nafas", "Pembengkakan pada jantung", "Kelainan fungsi hati"],
@@ -90,7 +90,15 @@ def deteksi_page(user):
                 st.write(f"Dari data yang Anda inputkan ({gejala_input}), Anda mungkin mengalami: {penyakit_tertinggi}")
             else:
                 st.write("Gejala yang Anda alami tidak sesuai dengan penyakit jantung yang terdaftar.")
+
+            # Menambahkan expander untuk hasil persentase
+            with st.expander("Lihat Hasil Persentase Kecocokan"):
+                for penyakit_name, persentase in hasil.items():
+                    st.write(f"{penyakit_name}: {persentase:.2%}")
     else:
-        st.write("Silakan pilih gejala yang anda rasakan dengan jujur untuk melanjutkan deteksi awal penyakit jantung.")
+        st.write("Silakan pilih gejala yang Anda rasakan dengan jujur untuk melanjutkan deteksi awal penyakit jantung.")
 
     st.write("---")
+
+if __name__ == "__main__":
+    deteksi_page()
