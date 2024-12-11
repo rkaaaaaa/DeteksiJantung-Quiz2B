@@ -100,5 +100,5 @@ def deteksi_page(user):
 
     st.write("---")
 
-if __name__ == "__main__":
+if __name__ == "___MAIN__":
     deteksi_page()
